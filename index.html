@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NYC Apartment Check</title>
+  <meta name="description" content="Look up an NYC building: HPD violations and complaints, DOB violations and permits, 311 requests, nearby crime, and rent-stabilization clues.">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1><a href="./">NYC Apartment Check</a></h1>
+      <p class="tag">One address in, everything the city publishes about the building and block out.</p>
+      <form id="search" autocomplete="off">
+        <div class="field addr">
+          <label for="addr">Address</label>
+          <input id="addr" type="text" placeholder="e.g. 135 West 96th Street, Manhattan" required>
+          <ul id="suggest" class="suggest" role="listbox" hidden></ul>
+        </div>
+        <div class="field apt">
+          <label for="apt">Apt (optional)</label>
+          <input id="apt" type="text" placeholder="4B">
+        </div>
+        <button type="submit">Check</button>
+      </form>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <section id="intro" class="intro">
+      <h2>What this checks</h2>
+      <ul>
+        <li><b>HPD</b>: housing violations, tenant complaints, housing court cases, evictions, owner &amp; managing agent</li>
+        <li><b>DOB</b>: building violations, ECB fines, complaints, permits and DOB NOW job filings</li>
+        <li><b>311</b>: service requests at the building and around the block</li>
+        <li><b>NYPD</b>: reported crimes within a radius you choose, compared to the city average</li>
+        <li><b>Rent stabilization</b>: a likelihood estimate plus where to confirm it</li>
+      </ul>
+      <p class="muted">Data comes live from <a href="https://opendata.cityofnewyork.us/" target="_blank" rel="noopener">NYC Open Data</a> and NYC Planning GeoSearch. Most datasets refresh daily; some lag by days or weeks.</p>
+    </section>
+    <div id="results" hidden></div>
+  </main>
+
+  <footer class="wrap foot muted">
+    Not affiliated with the City of New York. Data is provided as-is from public city datasets and may be incomplete or delayed — always confirm on the official sites before signing a lease.
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
